@@ -11,17 +11,13 @@ export const getItems = () => {
         .then((response) => response.json())
 
 }
-export const addItem = (itemData, authToken) => {
-    console.log('authToken:', authToken);
-    const { id, ...dataWithoutId } = itemData;
-
+export const addItem = (movieData) => {
     return fetch(`${baseUrl}/items`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authToken}`, 
         },
-        body: JSON.stringify(dataWithoutId),
+        body: JSON.stringify(movieData),
     })
         .then((response) => {
             if (!response.ok) {
@@ -31,9 +27,10 @@ export const addItem = (itemData, authToken) => {
         })
         .catch((error) => {
             console.error('Error adding item:', error);
-            throw error;
+            throw error; 
         });
 };
+
 
 export const loginUser = (credentials) => {
     return fetch(`${baseUrl}/auth/login`, {

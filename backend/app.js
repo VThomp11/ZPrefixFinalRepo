@@ -50,7 +50,7 @@ app.get('/items', async (req, res) => {
 });
 
 // authenticated users
-app.post('/items', authenticateJWT, (req, res) => {
+app.post('/items', (req, res) => {
     const itemData = req.body;
 
     // Remove the 'id' field from the insert statement

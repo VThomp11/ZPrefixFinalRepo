@@ -92,30 +92,17 @@ const App = () => {
       })
       .catch((error) => console.error('Error deleting Items:', error));
   };
-  const handleAddItems = () => {
-    if (!authenticated) {  console.error('Not authenticated. Please log in first.');
-    return;
-  }
-    const generatedId = Math.max(...items.map((item) => item.id), 0) + 1;
-  
-    addItem(
-      {
-        name: newItemName,
-        price: newItemPrice,
-        desc: newItemDesc,
-        count: newItemCount,
-      },
-      authToken // Assuming authToken is available
-    )
+  const handleAddItem = () => {
+    addItem({ name: newItemName, price: newItemPrice, desc: newItemDesc, count: newItemCount,})
       .then(() => {
+
         getItems().then((data) => setItems(data));
-  
         setNewItemName('');
         setNewItemPrice('');
         setNewItemDesc('');
         setNewItemCount('');
       })
-      .catch((error) => console.error('Error adding Item:', error));
+      .catch((error) => console.error('Error adding items:', error));
   };
 
   const handleUpdateName = () => {
@@ -305,7 +292,7 @@ const App = () => {
           onChange={(e) => setNewItemCount(e.target.value)}
           placeholder="New Item Quantity"
         />
-        <button onClick={handleAddItems}>Add Items</button>
+        <button onClick={handleAddItem}>Add Items</button>
       </div>
       <div className="update-section-name">
         <h2>Update Item Name</h2>
