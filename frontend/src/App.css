@@ -1,0 +1,59 @@
+/* App.css */
+
+.App {
+  text-align: center;
+  display: inline-block; 
+  text-align: left; 
+  background: linear-gradient(to right, #96bcca, #fdfdfd);
+  padding: 20px; 
+  border: 2px solid black; 
+}
+
+h1 {
+  color: green;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+span {
+  margin-right: 10px;
+}
+
+.year {
+  color: red;
+}
+
+button {
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+button:hover {
+  background-color: darkred;
+}
+ body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-position: center; */
+ }
+
+ .update-section {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20px;
+
+  /* background: linear-gradient(to right, #96bcca, #fdfdfd); */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
