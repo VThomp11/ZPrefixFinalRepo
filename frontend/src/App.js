@@ -93,6 +93,10 @@ const App = () => {
       .catch((error) => console.error('Error deleting Items:', error));
   };
   const handleAddItem = () => {
+    if (!authenticated ) {
+      console.error('Not authenticated or no item selected');
+      return;
+    }
     addItem({ name: newItemName, price: newItemPrice, desc: newItemDesc, count: newItemCount,})
       .then(() => {
 
