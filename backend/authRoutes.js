@@ -20,7 +20,6 @@ const pool = new Pool({
   port: 5432,
 });
 
-// Middleware to verify token
 const verifyToken = (req, res, next) => {
   const token = req.headers['authorization'];
 
@@ -38,15 +37,14 @@ const verifyToken = (req, res, next) => {
   });
 };
 
-// User registration endpoint
 router.post('/register', async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    // Hash the password before storing it
+    
     const hashedPassword = await hashPassword(password);
 
-    // Insert user into the existing database
+    
     const result = await pool.query(
       'INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *',
       [username, hashedPassword]
@@ -59,12 +57,11 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// User login endpoint
+
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    // Retrieve user from the existing database
     const result = await pool.query('SELECT * FROM users WHERE username = $1', [
       username,
     ]);

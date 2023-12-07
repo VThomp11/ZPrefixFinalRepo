@@ -11,15 +11,15 @@ export const getItems = () => {
         .then((response) => response.json())
 
 }
-export const addItem = (itemData, username, password) => {
-    // Omit the 'id' field from itemData
+export const addItem = (itemData, authToken) => {
+    console.log('authToken:', authToken);
     const { id, ...dataWithoutId } = itemData;
 
     return fetch(`${baseUrl}/items`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Basic ${btoa(`${username}:${password}`)}`,
+            'Authorization': `Bearer ${authToken}`, 
         },
         body: JSON.stringify(dataWithoutId),
     })
@@ -31,6 +31,46 @@ export const addItem = (itemData, username, password) => {
         })
         .catch((error) => {
             console.error('Error adding item:', error);
-            throw error; 
+            throw error;
+        });
+};
+
+export const loginUser = (credentials) => {
+    return fetch(`${baseUrl}/auth/login`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(credentials),
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Login failed');
+            }
+            return response.json();
+        })
+        .catch((error) => {
+            console.error('Error logging in:', error);
+            throw error;
+        });
+};
+
+export const registerUser = (userData) => {
+    return fetch(`${baseUrl}/auth/register`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Registration failed');
+            }
+            return response.json();
+        })
+        .catch((error) => {
+            console.error('Error registering user:', error);
+            throw error;
         });
 };
