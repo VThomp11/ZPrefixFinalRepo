@@ -1,3 +1,30 @@
+To start app:
+-------------------------------------------------
+open terminal
+        cd /backend
+        run 'npm i express'
+        run 'node app.js'
+
+        cd ./frontend
+        run 'npm start'
+
+
+
+I hope you enjoy my little jewlery store! :) 
+
+Please let me pass, thank you!
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

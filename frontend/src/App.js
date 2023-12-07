@@ -49,7 +49,8 @@ const App = () => {
         setIsLoggedIn(true);
         setAuthenticated(true); 
         setUsername(loginData.username);
-        toast.success('You are now logged in', loginData.username);
+        console.log('Username:', loginData.username); 
+        toast.success(`You are now logged in as ${loginData.username}!`);
       })
       .catch((error) => {
         console.error('Login failed', error);
@@ -220,7 +221,8 @@ const App = () => {
   
   return (
     <div className="App">
-      {isLoggedIn && <h2>You are now logged in</h2>}
+      <h2>Please register and log in to gain editing access</h2>
+      {isLoggedIn && <h2>You are now logged in as {loginData.username}! You are now able to edit your Inventory. Have fun!</h2>}
       <div className="login-section">
         <h2>Login</h2>
         <input
