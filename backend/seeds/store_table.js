@@ -3,7 +3,7 @@
  * @returns { Promise<void> } 
  */
 exports.seed = async function(knex) {
-  // // Deletes ALL existing entries
+  
   await knex('store_table').del()
   await knex('store_table').insert([
     { id: 1, name: 'Ruby Necklace', desc: 'Description: You will face many defeats in life, but never let yourself be defeated.', price: '$1200', count: '23' },

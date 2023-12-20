@@ -1,4 +1,4 @@
-// authRoutes.js
+
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
@@ -7,7 +7,7 @@ const { Pool } = require('pg');
 const cors = require('cors');
 
 const router = express.Router();
-const secretKey = 'secretkeyelephant'; // Replace with a strong secret key
+const secretKey = 'secretkeyelephant'; 
 
 router.use(bodyParser.json());
 router.use(cors());
@@ -72,7 +72,7 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    // Generate a token
+    //token
     const token = jwt.sign({ username }, secretKey, { expiresIn: '1h' });
 
     res.json({ token });
@@ -82,18 +82,18 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Protected route
+// protected 
 router.get('/protected', verifyToken, (req, res) => {
   res.json({ message: 'Protected route accessed successfully', user: req.user });
 });
 
-// Function to hash the password
+//hash 
 const hashPassword = async (password) => {
   const saltRounds = 10;
   return bcrypt.hash(password, saltRounds);
 };
 
-// Function to compare passwords
+// compare passwords
 const comparePasswords = async (password, hashedPassword) => {
   return bcrypt.compare(password, hashedPassword);
 };

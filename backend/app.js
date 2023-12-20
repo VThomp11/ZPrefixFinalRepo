@@ -53,7 +53,6 @@ app.get('/items', async (req, res) => {
 app.post('/items', (req, res) => {
     const itemData = req.body;
 
-    // Remove the 'id' field from the insert statement
     knex('store_table')
         .insert({
             name: itemData.name,
@@ -61,7 +60,7 @@ app.post('/items', (req, res) => {
             price: itemData.price,
             count: itemData.count,
         })
-        .returning('*')  // Returning all columns of the inserted row
+        .returning('*') 
         .into('store_table')
         .then((insertedItems) => {
             const insertedItem = insertedItems[0];

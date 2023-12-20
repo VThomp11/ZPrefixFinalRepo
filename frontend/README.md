@@ -1,18 +1,86 @@
 To start app:
 -------------------------------------------------
-open terminal
-        cd /backend
-        run 'npm i express'
-        run 'node app.js'
+LINES THAT START AND END WITH **** ARE SPECIFIC COMMANDS FOR YOU TO RUN, PLEASE READ THE WHOLE INSTRUCTIONS FIRST SO YOU KNOW WHAT PARTS OF THESE COMMANDS YOU MIGHT NEED TO CHANGE. ANY SECTION THAT MIGHT NEED TO BE CHANGED WITHIN THE COMMAND WILL START AND END WITH A SINGLE *.
 
-        cd ./frontend
-        run 'npm start'
+
+
+First thing you should do for setup is check that nothing is running on port 5234, 8080 or 3000 as they will all be needed.
+
+Next, you will have to create your own container and database in order for knex to work properly.
+        -To create a container, run:
+                
+                ****  docker run --rm --name *NEWNAME* -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres****
+                
+                
+        -In the spot where I have *NEWNAME*, you can replace it with any name you want that is not already being used by another container.
+
+        Next, you will run:
+
+                **** docker exec -it *FIRST4OFID* bash
+        
+        In the spot where I have *FIRST$OFID*, replace it with the first 4 characters in your postgres containers ID.
+
+        -Next, you will run:
+
+                ****psql -U postgres****
+        
+        Your terminal should now say "postfres=#"
+
+        -Next you will need to create a table named store_table. IT IS VERY IMPORTANT THAT YOU DO NOT CHANGE THIS NAME. You can run:
+        
+                **** CREATE DATABASE store_table; ****
+        
+        To double check the database was made, run ****\List;****
+
+        -In a seperate terminal is vscode, cd into backend and run the following commands:
+        
+                ****npx knex migrate:latest****
+                AND
+                ****npx knex seed:run****
+
+        After running these codes you should see tables and seeds migrated.
+
+        -While still in the backend, run the codes:
+
+                ****npm i express****
+                AND
+                ****node app.js**** 
+        The terminal should now say "Your application is running on port 8080"
+
+        -Next you want to open a new terminal in vscode, cd into frontend and run:
+
+                ****npm start****
+        The terminal will most likely say "Compiled with warnings", as long as the text is not red you should be good to go!
+
+
+
+THE APPLICATION:
+---------------------------------------------------------------------------------------------------
+
+As a visitor, you are able to see all inventory along with each items relevent information. You will notice if you try to edit, add, or delete and item nothing will change.
+
+If you want to edit, add, or delete an item you must log in first. 
+
+Register with an account and password. If your console says "registration failed", you probably stole my username. As long as you don't make it 'toritest' you most likely won't have an issue. If you want to check if your registration was successfull before logging in, look for the "Registration successful" message in the console.
+
+You are now able to log in. After logging in correctly, you will see a message above letting you know you are logged in as your username (what you are seeing us USER SPECIFIC INFORMATION! wow!). 
+
+You should now be able to edit, add, or delete any item using the fields below the inventory. If you go to localhost:8080/items, you will see that your new item has been added to the list there as well.
+
+
 
 
 
 I hope you enjoy my little jewlery store! :) 
+ If you have any questions or need any help, I am available on slack and I will help explain. 
 
-Please let me pass, thank you!
+
+Please let me pass, thank you! Here is a picture of a cat I copied and pasted, just for good luck:
+
+                           ╱|、
+                          (˚ˎ 。7  
+                           |、˜〵          
+                          じしˍ,)ノ
 
 
 
