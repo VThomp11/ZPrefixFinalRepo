@@ -49,6 +49,7 @@ Next, you will have to create your own container and database in order for knex 
 
         -Next you want to open a new terminal in vscode, cd into frontend and run:
 
+                ****npm install react-toastify web-vitals****
                 ****npm start****
         The terminal will most likely say "Compiled with warnings", as long as the text is not red you should be good to go!
 
