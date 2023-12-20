@@ -2,7 +2,7 @@ To start app:
 -------------------------------------------------
 LINES THAT START AND END WITH **** ARE SPECIFIC COMMANDS FOR YOU TO RUN, PLEASE READ THE WHOLE INSTRUCTIONS FIRST SO YOU KNOW WHAT PARTS OF THESE COMMANDS YOU MIGHT NEED TO CHANGE. ANY SECTION THAT MIGHT NEED TO BE CHANGED WITHIN THE COMMAND WILL START AND END WITH A SINGLE *.
 
-
+*to clone from github, run ****git clone git@github.com:VThomp11/ZPrefixFinalRepo.git *NAME* **** but I am assuming you have gotten atleast that far already*
 
 First thing you should do for setup is check that nothing is running on port 5234, 8080 or 3000 as they will all be needed.
 
